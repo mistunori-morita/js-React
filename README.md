@@ -90,3 +90,50 @@ alt.value = 'created'　//id名を追加
 p.setAttributeNode(alt)
 
 ```
+## Events
+- click
+- resize
+- keydown, keypress, keyup
+- mouseover
+- load
+
+```javascript
+1. click
+
+//clickしたらコンソールに表示
+document.getElementById('one').addEventListener('click',function(){
+  console.log('you clicked the button!');
+});
+
+//mouseoverをしたらinnerTextで文字を変更
+document.getElementById('two').addEventListener('mouseover', function() {
+  document.getElementById('two').innerText = 'you hovered over me!'
+});
+
+//bodyにイベントを設定、その内容がコールバックでstateTimeという関数を引き渡している
+document.body.addEventListener('timeEvent' ,stateTime);
+
+//stateTimeという関数を呼び出すようにしているのでその宣言
+function stateTime(e){
+  alert("event time is:" + e.detail);
+}
+
+//myEventにカスタムイベントを設定(自分だけのイベントを定義し発火させることができる)
+var myEvent = new CustomEvent('timeEvent', {
+  'detail' : new Date()
+});
+
+
+2.
+//指定したクラスの有る無しを切り替える toggle
+// クリックすると表示・非表示を切り替え
+document.getElementById('theme').addEventListener('click', function() {
+  document.body.classList.toggle('theme2');
+});
+
+
+3.
+
+
+
+```
