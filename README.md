@@ -1,4 +1,4 @@
-# js-React
+# js + React おさらい
 
 ## DOMについて
 - `console.dir(document)` DOMの階層を見ることができる。
@@ -15,7 +15,7 @@
 <h1 id="header">The DOM is cool for many reasons.</h1>
 consoleで確認
 
-`document.getElementById('header')`
+document.getElementById('header')
 を行うことでIDを取得することができる
 
 2.
@@ -24,18 +24,18 @@ consoleで確認
   <li>You can manipulate it</li>
 </ul>
 
-'document.getElementByClassName('list')'
+document.getElementByClassName('list')
 を行うことでclassを取得することができる
 [ul.list]
 
-'document.getElementsByClassName('list')[0]'では
+document.getElementsByClassName('list')[0]では
 <ul class="list">
   <li>You can see how pages are made</li>
   <li>You can manipulate it</li>
 </ul>
 この状態で出力される
 
-'document.getElementsByTagName('li')'
+document.getElementsByTagName('li')
 だと配列として取得することができる
 
 3.
@@ -62,9 +62,10 @@ document.querySelector('.list').children[0].innerHTML = 'this is the firest list
 
 - createElement()
 - createAttribute()
+- setAttributeNode
 
 ```javascript
-1.エレメントの作成
+1. エレメントの作成
 var p = document.createElement('p')
 console画面にてpと入力すると
 
@@ -80,8 +81,12 @@ p.innerText = 'this is the created element'
 document.body.appendChild(p)
 をすることで,すでにあるHTMLに追加することができる
 
-2.idを作成、追加
-var alt = document.createAttribute('id')
-alt.value = 'created'
+2. idを作成、追加
+var alt = document.createAttribute('id') //idを作成
+
+alt.value = 'created'　//id名を追加
+
+//作成したidを変数altにいれてあるので、それをsetする
+p.setAttributeNode(alt)
 
 ```
