@@ -131,9 +131,55 @@ document.getElementById('theme').addEventListener('click', function() {
   document.body.classList.toggle('theme2');
 });
 
+```
 
-3.
+## Ajax
+- 同期
+- 非同期
+- HTTP Methods(GET,POST,DELETE)
 
+```html
+HTTPE status Codes
+1. 100-level - hold on
+2. 200-level - here you go
+3. 300-level - go away
+4. 400-level - you messed up
+5. 500-level - servers messed up
+```
 
+```javascript
+
+1.
+//Ajax (非同期通信) に使われる組み込みオブジェクト
+var a = new XMLHttpRequest();
+
+//イベントの設定 readystatechangeを設定　200は成功
+a.addEventListener('readystatechange', function(r){
+  if(r.target.status === 200){
+    console.log(r.target.response);
+  }
+});
+
+//GETで対象のURLを設定して取得
+a.open('GET', 'https://api.github.com/users/cassidoo', true);
+
+//サーバへリクエストを送信
+a.send();
+
+2.
+//PromiseによるAjaxこの方法だと短くかける
+//Promiseのステータス
+- Pending - incomplete
+- Fulfilled - complete
+- Rejected - failed
+
+fetch('https://api.github.com/users/cassidoo')
+.then(function(r){
+  console.log(r.status); //これを入れると取得できているかどうかのステータスがわかる(※成功200)
+  return r.json();
+})
+.then(function(j) {
+  console.log(j);
+})
 
 ```
