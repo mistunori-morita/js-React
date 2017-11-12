@@ -239,3 +239,61 @@ function getUser(name) {
     })
 }
 ```
+
+## Scope
+- Global
+- Local
+
+```javascript
+//グローバル例
+var x = "hello, world";
+
+consoleで見ると普通に見える
+
+
+//function スコープ例
+function someFunction() {
+  //Local scope#1
+  function someOtherFunction() {
+    //Local scope#2
+  }
+}
+
+//Call method
+function greet(thing) {
+  console.log(this + " says greetings, " + thing);
+
+  greet.call("Cami", "earthilings")
+  //=> Cami says greetings, earthilings
+}
+
+
+//call method2
+var person = {
+  name: "Samantha",
+  greet: function(thing){
+    console.log(this.name + " says greetings, " + thing );
+  }
+}
+
+person.greet('neighbor')
+⬇︎
+person.greet.call(person, 'neighbor');
+// Samantha says greetings, neighbor
+
+
+//apply method
+function greet(thing1, thing2){
+  console.log(this + " says greetings, " + thing1);
+  console.log("But " + thing2 + " doesn't like " + this);
+}
+
+- コールとの違いをチェック
+greet.call('Smanatha', 'Maya', 'Angelina')
+
+//applyを使っても同じ結果になる（コールとの違い）
+greet.apply('Smanatha' , ['Maya', 'Angelina'])
+// Samantha says greeting, Maya
+// But Angelina doesn't like Samantha
+
+```
