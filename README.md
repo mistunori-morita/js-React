@@ -182,4 +182,60 @@ fetch('https://api.github.com/users/cassidoo')
   console.log(j);
 })
 
+これでjsonが取得できる
+```
+
+
+## json
+- keys astring wrapped in
+- Values can be a string, number, boolean expression, array, or object
+
+サンプル書式
+```javascript
+EXample json
+{
+  "name": "Mana",
+  age: 16,
+  "ocean": {
+      "chosen": true,
+      "vayaged": false
+  }
+}
+
+//名前を取得したい場合は
+console.log(json.name); //Mana
+
+//年齢を取得したい場合
+console.log(json.age);
+```
+### Converting JSON
+- JSON.stringify()  turn JSON into a string
+- JSON.parse()  turn a string into JSON
+
+```javascript
+※サンプルの場合の話 github Followers取得
+- Display avatar, username, real name, location, bio, and number of followers
+- Get the usernames and avatars of their followers
+- Add a "loading" indicator
+- Add an input box that takes in other usernames to display
+
+//jshandling.js一部抜粋
+var response = null;
+var followers = null;
+
+document.getElementsByTagName('button')[0].addEventListener('click', function(r) {
+  getUser(document.getElementsByTagName('input')[0].value);
+});
+
+function getUser(name) {
+  fetch('https://api.github.com/users/' + name)
+    .then(function(r) {
+      return r.json();
+    })
+    .then(function(j) {
+      response = j;
+      assignValues();
+      getFollowers(j.followers_url);
+    })
+}
 ```
